@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <ul>
+        <li>{{ message }}</li>
+    </ul>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <h1>画像をアップロードしてください</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <!-- enctype...送信するデータの形式（画像とかはこれを指定しないと送れない） -->
+        <input type="file" name="file" id="" accept=".jpg , .jpg , .png , .webp">
+        <input type="submit" value="アップロード">
+
+    </form>
+</body>
+
+</html>
